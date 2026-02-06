@@ -1,6 +1,5 @@
 import { nanoid } from 'nanoid'
 import UAParser from 'ua-parser-js'
-import geoip from 'geoip-lite'
 
 export function generateShortId(): string {
   return nanoid(10)
@@ -10,11 +9,6 @@ export function getDeviceType(userAgent: string): string {
   const parser = new UAParser(userAgent)
   const deviceType = parser.getDevice().type
   return deviceType || 'desktop'
-}
-
-export function getCountryFromIP(ip: string): string | null {
-  const geo = geoip.lookup(ip)
-  return geo?.country || null
 }
 
 export function formatPrice(price: number): string {
