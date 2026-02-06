@@ -1,44 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
-import crypto from 'crypto'
 import { logActivity } from '@/lib/activity-logger'
 import { sendEscrowReleasedEmail, sendDisputeOpenedEmail } from '@/lib/email-service'
-
-// Generate a secure confirmation token for buyer
-function generateConfirmationToken(escrowId: string, buyerEmail: string): string {
-  const secret = process.env.NEXTAUTH_SECRET
-  if (!secret) {
-    throw new Error('NEXTAUTH_SECRET environment variable is not set')
-  }
-  return crypto
-    .createHmac('sha256', secret)
-    .update(`${escrowId}:${buyerEmail}`)
-    .digest('hex')
-}
-
-// Verify the confirmation token
-function verifyConfirmationToken(
-  token: string,
-  escrowId: string,
-  buyerEmail: string
-): boolean {
-  try {
-    const expectedToken = generateConfirmationToken(escrowId, buyerEmail)
-
-    // Ensure both buffers are same length before comparison
-    if (token.length !== expectedToken.length) {
-      return false
-    }
-
-    return crypto.timingSafeEqual(
-      Buffer.from(token, 'hex'),
-      Buffer.from(expectedToken, 'hex')
-    )
-  } catch (error) {
-    console.error('Token verification error:', error)
-    return false
-  }
-}
+import { verifyConfirmationToken } from '@/lib/escrow-token'
 
 // GET - Get escrow status for buyer (with token)
 export async function GET(req: NextRequest) {
@@ -303,6 +267,3 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Failed to process action' }, { status: 500 })
   }
 }
-
-// Export the token generator for use in webhooks
-export { generateConfirmationToken }
