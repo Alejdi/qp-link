@@ -28,6 +28,9 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '5mb',
     },
+    // Disable the Suspense boundary requirement for useSearchParams
+    // This allows pages to use useSearchParams without wrapping in Suspense
+    missingSuspenseWithCSRBailout: false,
   },
 }
 
