@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --app --no-src --import-alias \"@/*\" --use-npm)",
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(npx tsx:*)",
+      "Bash(set NEXT_PUBLIC_SUPABASE_URL=https://nrcsrroeocttjxutpmxi.supabase.co:*)",
+      "Bash(set:*)",
+      "Bash(del test-db-connection.ts)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(if not exist \"c:\\Users\\HP\\Desktop\\QP Link\\app\\api\\products\\delete\" mkdir \"c:\\Users\\HP\\Desktop\\QP Link\\app\\api\\products\\delete\")",
+      "Bash(if not exist \"c:\\Users\\HP\\Desktop\\QP Link\\app\\api\\escrow\\[id]\" mkdir \"c:\\Users\\HP\\Desktop\\QP Link\\app\\api\\escrow\\[id]\")",
+      "Bash(curl:*)",
+      "Bash(node -e:*)",
+      "Bash(node test-password.js:*)",
+      "Bash(node verify-login.js:*)",
+      "Bash(node test-login-api.js:*)",
+      "Bash(tasklist:*)",
+      "Bash(if exist \"c:\\\\Users\\\\HP\\\\Desktop\\\\QP Link\\\\.next\" rmdir /s /q \"c:\\\\Users\\\\HP\\\\Desktop\\\\QP Link\\\\.next\")",
+      "Bash(if not exist \"c:\\\\Users\\\\HP\\\\Desktop\\\\QP Link\\\\app\\\\pay\\\\[shortCode]\" mkdir \"c:\\\\Users\\\\HP\\\\Desktop\\\\QP Link\\\\app\\\\pay\\\\[shortCode]\")",
+      "Bash(dir:*)",
+      "Bash(del \"app\\\\dashboard\\\\invoices\\\\[id]\\\\page.tsx\")",
+      "Bash(ren \"app\\\\dashboard\\\\invoices\\\\[id]\\\\page-new.tsx\" \"page.tsx\")",
+      "Bash(test:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
